@@ -20,56 +20,49 @@ set backspace=indent,eol,start
 " Mouse Capability in Vim
 set mouse=a
 
-" Vundle Settings and Plugins
-set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/ultisnips'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'christoomey/vim-system-copy'
-Plugin 'ervandew/supertab'
-Plugin 'honza/vim-snippets'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'matze/vim-move'
-Plugin 'morhetz/gruvbox'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'osyo-manga/vim-over'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'thoughtbot/pick.vim'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'godlygeek/tabular'
-Plugin 'mileszs/ack.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'danro/rename.vim'
-Plugin 'sbdchd/neoformat'
-Plugin 'fatih/vim-go'
-Plugin 'kchmck/vim-coffee-script'
-" Plugin 'chriskempson/base16-vim'
-Plugin 'altercation/vim-colors-solarized'
-" Plugin 'geoffharcourt/one-dark.vim'
-Plugin 'prettier/vim-prettier'
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-system-copy'
+Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+Plug 'matze/vim-move'
+Plug 'morhetz/gruvbox'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'ngmy/vim-rubocop'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'osyo-manga/vim-over'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'thoughtbot/pick.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby'
+Plug 'henrik/vim-indexed-search'
+Plug 'godlygeek/tabular'
+Plug 'mileszs/ack.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'danro/rename.vim'
+Plug 'sbdchd/neoformat'
+Plug 'kchmck/vim-coffee-script'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 
  call vundle#end()
@@ -89,24 +82,10 @@ set cursorline cursorcolumn
 
 " Color Scheme Settings
 highlight Comment cterm=italic
-
+syntax on
+color dracula
 syntax enable
 
-" Gruvbox
-" colorscheme gruvbox
-" set background=dark
-" let g:gruvbox_contrast_dark='soft'
-" set background=light
-" let g:gruvbox_contrast_light='hard'
-
-" Base16 Color Scheme
-" set background=dark
-" colorscheme base16-ocean
-
-" Solarized Color Scheme
-set background=light
-colorscheme solarized
-let g:solarized_termcolors=256
 
 " Search Settings
 set incsearch
@@ -296,3 +275,5 @@ set shellpipe=>
 " Make Neoformat run on save to pretty format JS
 " autocmd BufWritePre *.js Neoformat
 " autocmd BufWritePre *.jsx Neoformat
+
+call plug#end()
