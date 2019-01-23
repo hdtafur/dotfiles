@@ -64,8 +64,9 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+call plug#end()
 
- call vundle#end()
+
  filetype plugin indent on
 
 
@@ -275,5 +276,3 @@ set shellpipe=>
 " Make Neoformat run on save to pretty format JS
 " autocmd BufWritePre *.js Neoformat
 " autocmd BufWritePre *.jsx Neoformat
-
-call plug#end()
