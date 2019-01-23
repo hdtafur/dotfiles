@@ -159,15 +159,6 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 
-" Mapping Alt Key Correctly
-let c=']'
-while c<='z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c=nr2char(1+char2nr(c))
-endw
-
-
 " Bind K to grep word under cursor
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
 vnoremap K y:Ack! "\b<C-R>"\b"<CR>:cw<CR>
