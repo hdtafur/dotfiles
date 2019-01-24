@@ -12,7 +12,6 @@ set tabstop=2
 set autoindent
 set bri
 
-
 " Proper Backspacing Setting
 set nocompatible
 set backspace=indent,eol,start
@@ -22,7 +21,12 @@ set mouse=a
 
 call plug#begin('~/.vim/plugged')
 
+set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'Raimondi/delimitMate'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-system-copy'
@@ -31,15 +35,12 @@ Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
-Plug 'morhetz/gruvbox'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ngmy/vim-rubocop'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'osyo-manga/vim-over'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'thoughtbot/pick.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -55,20 +56,23 @@ Plug 'henrik/vim-indexed-search'
 Plug 'godlygeek/tabular'
 Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'danro/rename.vim'
 Plug 'sbdchd/neoformat'
 Plug 'kchmck/vim-coffee-script'
-Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'brooth/far.vim'
 
 call plug#end()
 
+filetype plugin indent on
 
- filetype plugin indent on
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
 
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 
 " General Settings
 set nocompatible
@@ -80,13 +84,11 @@ syntax on
 set timeoutlen=250 ttimeoutlen=0
 set cursorline cursorcolumn
 
+set rtp+=/usr/local/opt/fzf
 
 " Color Scheme Settings
 highlight Comment cterm=italic
-syntax on
 color dracula
-syntax enable
-
 
 " Search Settings
 set incsearch
@@ -102,18 +104,15 @@ inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
 
-
 " Split Settings
 set splitbelow
 set splitright
-
 
 " Movement between Splits
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
-
 
 " Buffer Shortcuts
 nnoremap <Leader>bb :b<SPACE>
@@ -127,7 +126,6 @@ nnoremap gd :bd<CR>
 nnoremap gp :b#<CR>
 nnoremap <Leader>cl :ccl<CR>
 
-
 " Vim-Airline Settings
 set laststatus=2
 let g:airline_powerline_fonts=1
@@ -139,25 +137,11 @@ let g:airline_section_c=''
 let g:airline_section_x='%v'
 let g:airline_section_y='%l'
 let g:airline_section_z='%p%%'
-" let g:airline_left_alt_sep=''
-" let g:airline_right_alt_sep=''
 let g:airline_theme='base16'
-
-
-" NERDTree Settings
-let NERDTreeShowLineNumbers=1
-let g:NERDTreeWinSize=30
-let g:NERDTreeMapOpenSplit='s'
-let g:NERDTreeMapOpenVSplit='v'
-nmap <Leader>nn :NERDTree<CR>
-nmap <Leader>nt :NERDTreeToggle<CR>
-nmap <Leader>nf :NERDTreeFind<CR>
-
 
 " File Capabilities
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-
 
 " Bind K to grep word under cursor
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -167,14 +151,11 @@ vnoremap K y:Ack! "\b<C-R>"\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ack<SPACE>
 
-
 " Ctags
 nnoremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-
 " Handlebars Abbreviations Activation
 let g:mustache_abbreviations=1
-
 
 " Find and Replace
 function! VisualFindAndReplace()
@@ -192,10 +173,8 @@ endfunction
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
-
 " Emmet Settings
 let g:user_emmet_leader_key='<Leader>e'
-
 
 " Syntastic Settings
 set statusline+=%#warningmsg#
@@ -213,48 +192,28 @@ let g:syntastic_typescript_tsc_fname = ''
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_ignore_errors=["proprietary attribute", "is not recognized!", "discarding unexpected", "trimming empty <", "missing </a>", "attribute name"]
 
-
 " Return to Marked Spot Keymapping
 nnoremap <Leader>m `
 
-
 " Set Old RegEx Engine
 set re=1
-
 
 " IndentLine Settings
 " let g:indentLine_color_term=8
 " let g:indentLine_char='·'
 
-
-" Ruby Path for rbenv Usage
-let g:ruby_path=system('echo $HOME/.rbenv/shims')
-
-
 " Redraw Mapping
 nnoremap <Leader>r :redraw!<CR>
-
 
 " Multiple Cursor Exit from Different Modes
 let g:multi_cursor_exit_from_insert_mode=0
 let g:multi_cursor_exit_from_visual_mode=0
 
-
 " Vim Fugitive Configuration
 set diffopt+=vertical
 
-
-
-" Pick
-nnoremap <C-P> :call PickFile()<CR>
-nnoremap <C-S> :call PickFileSplit()<CR>
-nnoremap <C-V> :call PickFileVerticalSplit()<CR>
-nnoremap <C-B> :call PickBuffer()<CR>
-let g:pick_height = 10
-
-
-" JSX Syntax
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" FZF
+nnoremap <C-p> :FZF<CR>
 
 " Ack search
 if executable('ag')
@@ -263,7 +222,3 @@ endif
 
 " Ack be pucking all over terminal
 set shellpipe=>
-
-" Make Neoformat run on save to pretty format JS
-" autocmd BufWritePre *.js Neoformat
-" autocmd BufWritePre *.jsx Neoformat
