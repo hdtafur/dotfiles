@@ -5,4 +5,7 @@
 *~
 *.swp
 .envrc
+node_modules/
+.elixir_ls/
+.vscode/
 

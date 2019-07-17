@@ -17,6 +17,8 @@ alias sz='source ~/.zshrc'
 alias vim='nvim'
 alias vi='nvim'
 alias nv='nvim'
+alias v='nvim'
+alias nf='nvim $(fzf)'
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/hdtafur/.oh-my-zsh
@@ -43,3 +45,8 @@ export ECTO_EDITOR=/usr/local/bin/subl
 
 # Redefine prompt_context for hiding user@hostname
 prompt_context () { }
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
+
+eval "$(direnv hook zsh)"
+
