@@ -57,12 +57,16 @@ Plug 'godlygeek/tabular'
 Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-lang/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 Plug 'danro/rename.vim'
 Plug 'sbdchd/neoformat'
 Plug 'kchmck/vim-coffee-script'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'brooth/far.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
 
@@ -223,3 +227,5 @@ endif
 " Ack be pucking all over terminal
 set shellpipe=>
 
+" Elixir formatter does its thing on save
+let g:mix_format_on_save = 1
