@@ -25,6 +25,7 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   history-substring-search
+  git-duet
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -39,7 +40,7 @@ export ECTO_EDITOR=/usr/local/bin/subl
 prompt_context () { }
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
 
 eval "$(direnv hook zsh)"
 
@@ -47,4 +48,4 @@ eval "$(direnv hook zsh)"
 . /Users/hdtafur/.asdf/asdf.sh
 fpath=(/Users/hdtafur/.asdf/completions /Users/hdtafur/.oh-my-zsh/plugins/history-substring-search /Users/hdtafur/.oh-my-zsh/plugins/git /Users/hdtafur/.oh-my-zsh/functions /Users/hdtafur/.oh-my-zsh/completions /Users/hdtafur/.oh-my-zsh/plugins/history-substring-search /Users/hdtafur/.oh-my-zsh/plugins/git /Users/hdtafur/.oh-my-zsh/functions /Users/hdtafur/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/local/Cellar/zsh/5.6.2_1/share/zsh/functions)
 autoload -Uz compinit && compinit
-
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 2097152 -kernel shell_history_path '\"./.iex-history\"'"
