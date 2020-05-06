@@ -54,7 +54,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'henrik/vim-indexed-search'
 Plug 'godlygeek/tabular'
-Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-mix-format'
@@ -67,6 +66,7 @@ Plug 'brooth/far.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'mileszs/ack.vim'
 
 call plug#end()
 
@@ -147,14 +147,6 @@ let g:airline_theme='base16'
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-" Bind K to grep word under cursor
-nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
-vnoremap K y:Ack! "\b<C-R>"\b"<CR>:cw<CR>
-
-" Bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ack<SPACE>
-
 " Ctags
 nnoremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -202,10 +194,6 @@ nnoremap <Leader>m `
 " Set Old RegEx Engine
 set re=1
 
-" IndentLine Settings
-" let g:indentLine_color_term=8
-" let g:indentLine_char='·'
-
 " Redraw Mapping
 nnoremap <Leader>r :redraw!<CR>
 
@@ -219,13 +207,11 @@ set diffopt+=vertical
 " FZF
 nnoremap <C-p> :FZF<CR>
 
-" Ack search
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 " Ack be pucking all over terminal
 set shellpipe=>
+
+" use Ag with ack.vim
+let g:ackprg = 'ag --vimgrep'
 
 " Elixir formatter does its thing on save
 let g:mix_format_on_save = 1
