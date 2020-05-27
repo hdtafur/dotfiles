@@ -1,5 +1,7 @@
+.iex-history/
 /.idea
 .DS_Store
+*.iml
 
 # vi
 *~
@@ -8,4 +10,3 @@
 node_modules/
 .elixir_ls/
 .vscode/
-

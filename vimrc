@@ -88,7 +88,14 @@ syntax on
 set timeoutlen=250 ttimeoutlen=0
 set cursorline cursorcolumn
 
+" FZF configuration
 set rtp+=/usr/local/opt/fzf
+nnoremap <C-g> :Rg<Cr>
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Color Scheme Settings
 highlight Comment cterm=italic
@@ -203,9 +210,6 @@ let g:multi_cursor_exit_from_visual_mode=0
 
 " Vim Fugitive Configuration
 set diffopt+=vertical
-
-" FZF
-nnoremap <C-p> :FZF<CR>
 
 " Ack be pucking all over terminal
 set shellpipe=>
