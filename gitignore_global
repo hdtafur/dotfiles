@@ -1,7 +1,5 @@
-.iex-history/
-/.idea
+/.iex-history/
 .DS_Store
-*.iml
 
 # vi
 *~
