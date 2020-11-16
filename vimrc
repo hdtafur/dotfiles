@@ -49,8 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'henrik/vim-indexed-search'
 Plug 'godlygeek/tabular'
@@ -67,6 +66,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'mileszs/ack.vim'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -99,7 +99,9 @@ let g:fzf_action = {
 
 " Color Scheme Settings
 highlight Comment cterm=italic
-color dracula
+colorscheme one
+set background=light " for the light version
+" set background=dark " for the dark version
 
 " Search Settings
 set incsearch
@@ -136,19 +138,6 @@ nnoremap gn :bn<CR>
 nnoremap gd :bd<CR>
 nnoremap gp :b#<CR>
 nnoremap <Leader>cl :ccl<CR>
-
-" Vim-Airline Settings
-set laststatus=2
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#default#section_truncate_width = {}
-let g:airline_section_b='%f'
-let g:airline_section_c=''
-let g:airline_section_x='%v'
-let g:airline_section_y='%l'
-let g:airline_section_z='%p%%'
-let g:airline_theme='base16'
 
 " File Capabilities
 nnoremap <Leader>w :w<CR>
