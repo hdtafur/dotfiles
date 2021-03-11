@@ -2,9 +2,7 @@ alias gst="git status"
 alias gpr="git pull -r"
 alias hg="history | grep"
 alias da='direnv allow'
-alias c='iex -S mix'
 alias canada='git duet-commit --amend --no-edit --reset-author'
-alias dd='cd ~/Code/gitlab/dailydiff'
 alias ev='nvim ~/.config/nvim/init.vim'
 alias ez='nvim ~/.zshrc'
 alias sv='source ~/.config/nvim/init.vim'
@@ -14,15 +12,7 @@ alias vi='nvim'
 alias nv='nvim'
 alias v='nvim'
 alias nf='nvim $(fzf)'
-alias shipit='bin/dev/shipit'
 alias g="git"
-alias solo='git solo ht'
-alias bdd='bin/dev/doctor'
-alias bds='bin/dev/start'
-alias bdsf='bin/dev/start fast'
-alias bdt='bin/dev/test'
-alias bdu="bin/dev/update"
-alias 🚢='bin/dev/shipit'
 
 # path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -61,6 +51,5 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 compinit
-
 
 export PATH="/Applications/Postgres.app/Contents/Versions/11/bin:/usr/local/sbin:$PATH"
